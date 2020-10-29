@@ -32,6 +32,12 @@ jobs:
           command: |
             VERSION=${CIRCLE_TAG}
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/golang-cli-example/bin
+  release:
+    docker:
+      - image: circleci/golang:1.14
+    steps:
+      - checkout
+      - run: curl -sL https://git.io/goreleaser | bash
 workflows:
   version: 2
   release:
@@ -42,6 +48,14 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v\d+\.\d+\.\d+.*/
+      #- publish-github-release:
+      #    requires:
+      #      - build
+      #    filters:
+      #      branches:
+      #        ignore: /.*/
+      #      tags:
+      #        only: /^v\d+\.\d+\.\d+.*/
       - publish-github-release:
           requires:
             - build
