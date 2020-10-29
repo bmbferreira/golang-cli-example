@@ -7,9 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Fetch dependencies
-          command: go mod download
-      - run:
           name: Building
           # TODO: other archs/oses
           command: |
