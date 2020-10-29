@@ -16,6 +16,9 @@ builds:
     main: ./hello.go
     ldflags:
       - -X main.Version={{.Env.CIRCLE_TAG}}
+archives:
+  - format: binary
+    name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
