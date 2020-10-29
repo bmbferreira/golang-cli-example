@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.14
+    working_directory: ~/golang-cli-example
     steps:
       - checkout
       - run:
@@ -28,12 +29,12 @@ jobs:
       - image: cibuilds/github:0.13
     steps:
       - attach_workspace:
-          at: .
+          at: ~/golang-cli-example
       - run:
           name: "Publish Release on GitHub"
           command: |
             VERSION=${CIRCLE_TAG}
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} bin
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/golang-cli-example/bin
 workflows:
   version: 2
   release:
