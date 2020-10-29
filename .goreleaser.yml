@@ -14,10 +14,10 @@ brews:
     tap:
       owner: bmbferreira
       name: golang-cli-example
+      download_strategy: GitDownloadStrategy
 archives:
   - name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     format: tar.gz
-    download_strategy: GitDownloadStrategy
 checksum:
   name_template: 'checksums.txt'
 snapshot:
