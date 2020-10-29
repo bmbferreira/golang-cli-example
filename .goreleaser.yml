@@ -16,6 +16,19 @@ builds:
     main: ./hello.go
     ldflags:
       - -X main.Version={{.Env.CIRCLE_TAG}}
+brews:
+  -
+    name: {{ .Env.CIRCLE_PROJECT_REPONAME }}
+
+
+    # NOTE: make sure the url_template, the token and given repo (github or gitlab) owner and name are from the
+    # same kind. We will probably unify this in the next major version like it is done with scoop.
+
+    # GitHub/GitLab repository to push the formula to
+    # Gitea is not supported yet, but the support coming
+    tap:
+      owner: bmbferreira
+      name: {{ .Env.CIRCLE_PROJECT_REPONAME }}
 archives:
   - format: binary
     name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
