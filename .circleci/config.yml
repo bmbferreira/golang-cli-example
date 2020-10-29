@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Building
           command: |
-            curl -sL https://git.io/goreleaser | bash -s build --skip-validate --rm-dist
+            curl -sL https://git.io/goreleaser | CIRCLE_TAG=snapshot bash -s build --snapshot --rm-dist
   release:
     docker:
       - image: circleci/golang:1.14
@@ -21,7 +21,7 @@ jobs:
             curl -sL https://git.io/goreleaser | bash -s release --rm-dist
 workflows:
   version: 2
-  release:
+  build-and-release:
     jobs:
       - build:
           filters:
