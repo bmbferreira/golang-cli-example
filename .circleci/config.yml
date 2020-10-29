@@ -8,36 +8,17 @@ jobs:
       - checkout
       - run:
           name: Building
-          # TODO: other archs/oses
           command: |
-            VERSION=${CIRCLE_TAG}
-            GOOS=linux GOARCH=amd64 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-linux-amd64 hello.go
-            GOOS=linux GOARCH=386 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-linux-386 hello.go
-            GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-darwin-amd64 hello.go
-            GOOS=darwin GOARCH=386 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-darwin-386 hello.go
-            GOOS=windows GOARCH=amd64 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-windows-amd64.exe hello.go
-            GOOS=windows GOARCH=386 go build -ldflags "-X main.Version=${VERSION}" -o bin/hello-${VERSION}-windows-386.exe hello.go
-      - persist_to_workspace:
-          root: .
-          paths:
-            - bin
-  publish-github-release:
-    docker:
-      - image: cibuilds/github:0.13
-    steps:
-      - attach_workspace:
-          at: ~/golang-cli-example
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            VERSION=${CIRCLE_TAG}
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ~/golang-cli-example/bin
+            curl -sL https://git.io/goreleaser | bash -s build --skip-validate --rm-dist
   release:
     docker:
       - image: circleci/golang:1.14
     steps:
       - checkout
-      - run: curl -sL https://git.io/goreleaser | bash
+      - run:
+          name: Releasing
+          command: |
+            curl -sL https://git.io/goreleaser | bash -s release --rm-dist
 workflows:
   version: 2
   release:
@@ -45,20 +26,8 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d+\.\d+\.\d+.*/
-      #- publish-github-release:
-      #    requires:
-      #      - build
-      #    filters:
-      #      branches:
-      #        ignore: /.*/
-      #      tags:
-      #        only: /^v\d+\.\d+\.\d+.*/
-      - publish-github-release:
-          requires:
-            - build
+              ignore: main
+      - release:
           filters:
             branches:
               ignore: /.*/
