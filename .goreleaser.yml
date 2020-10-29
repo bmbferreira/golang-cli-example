@@ -10,10 +10,10 @@ builds:
     ldflags:
       - -X main.Version={{.Env.CIRCLE_TAG}}
 brews:
-  - name: "{{ .Env.CIRCLE_PROJECT_REPONAME }}"
+  - name: golang-cli-example
     tap:
       owner: bmbferreira
-      name: "{{ .Env.CIRCLE_PROJECT_REPONAME }}"
+      name: golang-cli-example
 archives:
   - name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
 checksum:
