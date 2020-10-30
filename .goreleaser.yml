@@ -15,9 +15,9 @@ brews:
     tap:
       owner: bmbferreira
       name: golang-cli-example
-#archives:
-#  - name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
-#    format: tar.gz
+archives:
+  - name_template: "{{ .Env.CIRCLE_PROJECT_REPONAME }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+    format: tar.gz
 checksum:
   name_template: 'checksums.txt'
 snapshot:
