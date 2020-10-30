@@ -6,11 +6,16 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - 386
     main: ./hello.go
     ldflags:
       - -X main.Version={{.Env.CIRCLE_TAG}}
 brews:
   - name: golang-cli-example
+    homepage: 'https://github.com/bmbferreira/golang-cli-example'
+    description: 'Example binary distribution of a private repo using goreleaser and homebrew.'
     download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
     custom_require: "lib/private"
     folder: Formula

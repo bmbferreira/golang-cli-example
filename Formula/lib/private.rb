@@ -1,5 +1,7 @@
 require "download_strategy"
 
+# Code retrieved from here: https://franzramadhan.com/posts/9-publish-homebrew-in-private-repo/
+
 # GitHubPrivateRepositoryDownloadStrategy downloads contents from GitHub
 # Private Repository. To use it, add
 # `:using => :github_private_repo` to the URL section of
