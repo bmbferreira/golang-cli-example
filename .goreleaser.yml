@@ -11,7 +11,8 @@ builds:
       - -X main.Version={{.Env.CIRCLE_TAG}}
 brews:
   - name: golang-cli-example
-    #download_strategy: GitDownloadStrategy
+    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+    custom_require: "private"
     tap:
       owner: bmbferreira
       name: golang-cli-example
