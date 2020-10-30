@@ -2,16 +2,16 @@
 class GolangCliExample < Formula
   desc ""
   homepage ""
-  version "0.0.6-alpha.6"
+  version "0.0.10-alpha.10"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.6-alpha.6/golang-cli-example-0.0.6-alpha.6-darwin-amd64.tar.gz"
-    sha256 "cb7759b2084f9f7403777454448bf3dd217fad2e63d59c205bd2d9eb84bd23a7"
+    url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.10-alpha.10/golang-cli-example-0.0.10-alpha.10-darwin-amd64.tar.gz", :using => GitDownloadStrategy
+    sha256 "c8268866f89d19b26c2309510f1cde7bad5e0f34909b6021cd10e0a3c4d1cd66"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.6-alpha.6/golang-cli-example-0.0.6-alpha.6-linux-amd64.tar.gz"
-      sha256 "ab3508357195a4b32b00cabbb0b09557e81b9da2fece1d21936570c58b292487"
+      url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.10-alpha.10/golang-cli-example-0.0.10-alpha.10-linux-amd64.tar.gz", :using => GitDownloadStrategy
+      sha256 "bb1ba3e811254fd7db55554bee09bd65b4775e73561e7d6b5b01dd5a85292a45"
     end
   end
 
