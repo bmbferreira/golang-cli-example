@@ -11,7 +11,8 @@ builds:
       - -X main.Version={{.Env.CIRCLE_TAG}}
 brews:
   - name: golang-cli-example
-    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+    #download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
+    download_strategy: GitDownloadStrategy
     custom_require: "lib/private"
     folder: Formula
     tap:
