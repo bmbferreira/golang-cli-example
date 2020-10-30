@@ -3,16 +3,16 @@ require_relative "lib/private"
 class GolangCliExample < Formula
   desc ""
   homepage ""
-  version "0.0.17-alpha.17"
+  version "0.0.18-alpha.18"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.17-alpha.17/golang-cli-example-0.0.17-alpha.17-darwin-amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "e79bf7528773d013ff0dfca215a82f10e88f64c5629234442dbf1db58e4207a6"
+    url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.18-alpha.18/golang-cli-example-0.0.18-alpha.18-darwin-amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "6df4867fc0a9564e67f4442a05e2b4db23b7bc415f5d8372cb66a5a807748cb2"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.17-alpha.17/golang-cli-example-0.0.17-alpha.17-linux-amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8b247e913f120fbcaaa385b7afbe2f6d9fbde021117de51f4012246ef56351e4"
+      url "https://github.com/bmbferreira/golang-cli-example/releases/download/v0.0.18-alpha.18/golang-cli-example-0.0.18-alpha.18-linux-amd64.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "fea07a27657d71c99de5f2e730db9dd59bdab48bd6a992ce66a77ab65dac0c94"
     end
   end
 
