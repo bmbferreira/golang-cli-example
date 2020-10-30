@@ -12,7 +12,7 @@ builds:
 brews:
   - name: golang-cli-example
     download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
-    custom_require: "private"
+    custom_require: "lib/private"
     folder: Formula
     tap:
       owner: bmbferreira
