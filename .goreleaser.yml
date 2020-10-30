@@ -13,6 +13,7 @@ brews:
   - name: golang-cli-example
     download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
     custom_require: "private"
+    folder: Formula
     tap:
       owner: bmbferreira
       name: golang-cli-example
